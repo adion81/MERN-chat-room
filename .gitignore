@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 package-lock.json
+/backend/package-lock.json
 
 # testing
 /coverage
@@ -173,4 +174,3 @@ sketch
 .history
 
 # End of https://www.gitignore.io/api/node,react,macos,visualstudiocode
-

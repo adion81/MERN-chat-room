@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Timer from './components/Timer';
+import Message from './components/Message';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [userName, setUserName] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const updateUser = (e) => {
+    setUserName(e.target.value)
+  }
+
+  if(loggedIn === false){
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1>Welcome to ChatterBox</h1>
+          <div className="form-inline">
+            <input 
+              
+              className="form-control m-3"  
+              value={userName}
+              onChange={updateUser}
+
+            />
+            <button className="btn btn-outline-warning"onClick={() => setLoggedIn(true)}>ENTER</button>
+
+          </div>
+  
+        </header>
+        <Timer />
+      </div>
+    );
+  }
+  else{
+    return(
+      <div className="App">
+        <header className="App-header">
+          <h1>ChatterBox</h1>
+          
+  
+        </header>
+        <Message 
+          user={userName}
+        />
+        <Timer />
+      </div>
+    );
+  }
 }
 
 export default App;
